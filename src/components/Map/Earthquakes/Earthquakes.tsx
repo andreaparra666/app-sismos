@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import L, { LatLng, GeoJSON } from 'leaflet';
 import { useMap } from 'react-leaflet';
 import { useQuery } from '@tanstack/react-query';
-
 import Spinner from '../../Spinner';
 import { onEachFeature } from './utils';
 import { geojsonMarkerOptions } from '../utils';
-import { getEarthquakes } from '../../../api/earthquakes';
+import{ getEarthquakes } from '../../../api/earthquakes';
+import{ getEarthquakesResnom } from '../../../api/earthquakesResnom';
 import { FeatureProps } from './models';
 import { useAppContext } from '../../../context';
 
@@ -18,7 +18,13 @@ export default function Earthquakes() {
 
   const { data: earthquakes, isLoading } = useQuery(
     ['earthquakes', startTime, endTime],
-    () => getEarthquakes(startTime, endTime)
+    () => getEarthquakes(startTime,endTime),
+    
+  );
+
+   const { data: earthquakesResnom } = useQuery(
+    ['earthquakesResnom', startTime, endTime],
+    () => getEarthquakesResnom(startTime,endTime),
   );
 
   const map = useMap();
@@ -36,9 +42,21 @@ export default function Earthquakes() {
     });
 
     if (map) geojson.addTo(map);
+
+     geojson = L.geoJSON(earthquakesResnom.features, {
+      onEachFeature,
+      pointToLayer: (feature: FeatureProps, latlng: LatLng) => {
+        const magnitude = feature.properties.mag;
+        return L.circleMarker(latlng, geojsonMarkerOptions(magnitude));
+      }
+    });
+
+    if (map) geojson.addTo(map);
+
   }, [earthquakes, map]);
 
   if (isLoading) return <Spinner />;
 
   return null;
 }
+

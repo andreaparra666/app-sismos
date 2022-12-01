@@ -22,4 +22,8 @@ const tectonicPlatesStyle = {
   weight: 3
 };
 
-export { mapHeight, tileLayers, tectonicPlatesStyle };
+const fallasStyle = {
+  color: 'blue',
+  weight: 1
+};
+export { mapHeight, tileLayers, tectonicPlatesStyle, fallasStyle};

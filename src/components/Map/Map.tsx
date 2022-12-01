@@ -9,7 +9,8 @@ import {
 import Earthquakes from './Earthquakes';
 import Legend from './Legend';
 import tectonicPlates from './PB2002_boundaries.json';
-import { mapHeight, tectonicPlatesStyle, tileLayers } from './constants';
+import fallasResnom from './fallasResnom.json';
+import { mapHeight, tectonicPlatesStyle, tileLayers , fallasStyle} from './constants';
 
 export default function Map() {
   return (
@@ -20,10 +21,16 @@ export default function Map() {
             <TileLayer attribution={attribution} url={url} />
           </LayersControl.BaseLayer>
         ))}
-        <LayersControl.Overlay name="Tectonic Plates">
+        <LayersControl.Overlay name="Placas Tectonicas">
           <GeoJSON
             data={tectonicPlates as GeoJSON.GeoJsonObject}
             style={tectonicPlatesStyle}
+          />
+        </LayersControl.Overlay>
+        <LayersControl.Overlay name="Fallas">
+          <GeoJSON
+            data={fallasResnom as GeoJSON.GeoJsonObject}
+            style={fallasStyle}
           />
         </LayersControl.Overlay>
       </LayersControl>

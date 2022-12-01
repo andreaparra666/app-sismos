@@ -23,8 +23,8 @@ const reducer = (state: State, action: Action): State => {
 };
 
 const initialState: State = {
-  startTime: 'NOW - 3days',
-  endTime: '',
+  startTime: '2022-11-21',
+  endTime: '2022-12-01',
   numOfDays: '3 days'
 };
 

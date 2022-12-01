@@ -25,6 +25,7 @@ const onEachFeature = (feature: FeatureProps, layer: Layer) => {
     <b>Profundidad</b>: ${coordinates[2]} km <br>
     <b>Magnitud</b>: ${mag} Richter <br>
     <a href=${url} target="_blank">click aqui para ver más información</a>
+    <button onclick='guardar(${title},${place},${time},${coordinates[1]},${coordinates[0]},${coordinates[2]},${mag},${url})'>Guardar</button>
   `;
 
   layer.bindPopup(popupContent);
