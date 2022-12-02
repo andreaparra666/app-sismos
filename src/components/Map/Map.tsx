@@ -6,11 +6,8 @@ import {
   ScaleControl
 } from 'react-leaflet';
 
-import Earthquakes from './Earthquakes';
-import Legend from './Legend';
 import tectonicPlates from './PB2002_boundaries.json';
-import fallasResnom from './fallasResnom.json';
-import { mapHeight, tectonicPlatesStyle, tileLayers , fallasStyle} from './constants';
+import { mapHeight, tectonicPlatesStyle, tileLayers , fallasStyle, myStyle} from './constants';
 
 export default function Map() {
   return (
@@ -21,23 +18,20 @@ export default function Map() {
             <TileLayer attribution={attribution} url={url} />
           </LayersControl.BaseLayer>
         ))}
-        <LayersControl.Overlay name="Placas Tectonicas">
+        <LayersControl.Overlay name="Logs">
           <GeoJSON
             data={tectonicPlates as GeoJSON.GeoJsonObject}
-            style={tectonicPlatesStyle}
+            style={myStyle}
           />
         </LayersControl.Overlay>
         <LayersControl.Overlay name="Fallas">
-          <GeoJSON
+          {/* <GeoJSON
             data={fallasResnom as GeoJSON.GeoJsonObject}
             style={fallasStyle}
-          />
+          /> */}
         </LayersControl.Overlay>
       </LayersControl>
-
-      <Earthquakes />
       <ScaleControl />
-      <Legend />
     </MapContainer>
   );
 }

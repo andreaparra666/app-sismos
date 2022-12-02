@@ -19,11 +19,17 @@ const tileLayers = [
 
 const tectonicPlatesStyle = {
   color: 'magenta',
-  weight: 3
+  weight: 10
 };
 
 const fallasStyle = {
   color: 'blue',
   weight: 1
 };
-export { mapHeight, tileLayers, tectonicPlatesStyle, fallasStyle};
+
+var myStyle = {
+ "color": "#ff7800",
+ "weight": 5,
+ "opacity": 0.65
+};
+export { mapHeight, tileLayers, tectonicPlatesStyle, fallasStyle, myStyle};

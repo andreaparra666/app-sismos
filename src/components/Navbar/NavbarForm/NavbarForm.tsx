@@ -1,7 +1,6 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
 
 import { EndTimeInput, Icon } from './styles';
-import InfoTip from './Infotip';
 import { changeState, types, useAppContext } from '../../../context';
 
 export default function NavBarForm() {
@@ -59,27 +58,7 @@ export default function NavBarForm() {
           </span>
         </div>
       </div>
-      <InfoTip
-        target="startTime"
-        tooltipOpen={startTimeTooltipOpen}
-        setTooltipOpen={setStartTimeTooltipOpen}
-      />
-      <EndTimeInput
-        className="form-control mr-sm-2"
-        id="endTime"
-        type="date"
-        disabled={toggleIcon ? true : false}
-        value={endTime}
-        onChange={handleEndTimeChange}
-      />
-      <InfoTip
-        target="endTime"
-        tooltipOpen={endTimeTooltipOpen}
-        setTooltipOpen={setEndTimeTooltipOpen}
-      />
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Buscar
-      </button>
+
     </form>
   );
 }
